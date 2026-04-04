@@ -5,8 +5,20 @@
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link href="./src/App.css" rel="stylesheet" />
-
-        <title>nozartblog-frontend</title>
+        <script>
+            (function () {
+                try {
+                    var k = "nozartblog-theme";
+                    var t = localStorage.getItem(k);
+                    var dark =
+                        t === "dark" ||
+                        (t !== "light" &&
+                            window.matchMedia("(prefers-color-scheme: dark)")
+                                .matches);
+                    if (dark) document.documentElement.classList.add("dark");
+                } catch (e) {}
+            })();
+        </script>
     </head>
     <body>
         <div id="root"></div>

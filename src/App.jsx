@@ -1,11 +1,30 @@
-import { Button } from "@/components/ui/button";
+import { ThemeProvider } from "@/components/theme-provider";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { TooltipProvider } from "./components/ui/tooltip";
+import { PostPage } from "./components/page/post/PostPage";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router";
+import { CreatePost } from "./components/page/post/CreatePost";
 
-function App() {
+export default function App() {
     return (
-        <div className="flex min-h-svh flex-col items-center justify-center">
-            <Button>Click me</Button>
-        </div>
+        <BrowserRouter>
+            <ThemeProvider>
+                <TooltipProvider>
+                    <SidebarProvider>
+                        <Routes>
+                            <Route
+                                path="/"
+                                element={<Navigate to="/posts" replace />}
+                            />
+                            <Route path="/posts" element={<PostPage />} />
+                            <Route
+                                path="/posts/create"
+                                element={<CreatePost />}
+                            />
+                        </Routes>
+                    </SidebarProvider>
+                </TooltipProvider>
+            </ThemeProvider>
+        </BrowserRouter>
     );
 }
-
-export default App;
