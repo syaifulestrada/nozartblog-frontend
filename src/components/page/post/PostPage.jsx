@@ -100,6 +100,9 @@ export function PostPage() {
             <h1 className="text-2xl font-semibold tracking-tight">
                 Daftar post
             </h1>
+            <div>
+                <Button>Create</Button>
+            </div>
             <DataTable columns={columns} data={posts} />
         </DashboardLayout>
     );
