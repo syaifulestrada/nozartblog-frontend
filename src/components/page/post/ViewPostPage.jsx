@@ -1,21 +1,22 @@
-import { useParams } from "react-router";
+import { useNavigation, useParams } from "react-router";
 import { DashboardLayout } from "@/components/layout/dashboard-layout";
 import {
     Card,
     CardAction,
     CardContent,
     CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { resumeAndPrerenderToNodeStream } from "react-dom/static";
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router";
 
 export function ViewPostPage() {
     const [posts, setPosts] = useState([]);
     let params = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchViewDataPost = async () => {
@@ -53,7 +54,15 @@ export function ViewPostPage() {
                             <CardDescription>
                                 Category : {post.categories}
                             </CardDescription>
-                            <CardAction>Edit</CardAction>
+                            <CardAction>
+                                <Button variant="secondary">Edit</Button>
+                                <Button
+                                    variant="outline"
+                                    onClick={() => navigate("/posts")}
+                                >
+                                    Back
+                                </Button>
+                            </CardAction>
                         </CardHeader>
                         <CardContent>{post.content}</CardContent>
                     </Card>
