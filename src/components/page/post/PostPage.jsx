@@ -39,11 +39,7 @@ export function PostPage() {
                             size="sm"
                             variant="destructive"
                             onClick={() => {
-                                if (
-                                    window.confirm(
-                                        "Are you sure to delete this record?",
-                                    )
-                                )
+                                if (window.confirm("Are you sure to delete this record?"))
                                     deletePost(post.id);
                             }}
                         >
@@ -57,17 +53,12 @@ export function PostPage() {
 
     useEffect(() => {
         const fetchDataPost = async () => {
-            const response = await axios.get(
-                `${import.meta.env.VITE_API_URL}/posts`,
-                {
-                    headers: {
-                        "x-api-key": `${import.meta.env.VITE_API_KEY}`,
-                    },
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/posts`, {
+                headers: {
+                    "x-api-key": `${import.meta.env.VITE_API_KEY}`,
                 },
-            );
-            setPosts(
-                Array.isArray(response.data?.data) ? response.data?.data : [],
-            );
+            });
+            setPosts(Array.isArray(response.data?.data) ? response.data?.data : []);
         };
         fetchDataPost();
     }, []);
@@ -75,14 +66,11 @@ export function PostPage() {
     function deletePost(postId) {
         const fetchDeletePost = async () => {
             try {
-                await axios.delete(
-                    `${import.meta.env.VITE_API_URL}/posts/${postId}`,
-                    {
-                        headers: {
-                            "x-api-key": `${import.meta.env.VITE_API_KEY}`,
-                        },
+                await axios.delete(`${import.meta.env.VITE_API_URL}/posts/${postId}`, {
+                    headers: {
+                        "x-api-key": `${import.meta.env.VITE_API_KEY}`,
                     },
-                );
+                });
 
                 setPosts((prev) => prev.filter((p) => p.id !== postId));
             } catch (error) {
@@ -93,15 +81,10 @@ export function PostPage() {
     }
 
     return (
-        <DashboardLayout
-            documentTitle="NozartBlog | Post Index"
-            breadcrumbs={[{ label: "Post" }]}
-        >
-            <h1 className="text-2xl font-semibold tracking-tight">
-                Daftar post
-            </h1>
+        <DashboardLayout documentTitle="NozartBlog | Post Index" breadcrumbs={[{ label: "Post" }]}>
+            <h1 className="text-2xl font-semibold tracking-tight">Daftar post</h1>
             <div>
-                <Button>Create</Button>
+                <Button onClick={() => navigate("/posts/create")}>Create</Button>
             </div>
             <DataTable columns={columns} data={posts} />
         </DashboardLayout>
