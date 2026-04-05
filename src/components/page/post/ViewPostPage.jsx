@@ -1,4 +1,4 @@
-import { useNavigation, useParams } from "react-router";
+import { useParams } from "react-router";
 import { DashboardLayout } from "@/components/layout/dashboard-layout";
 import {
     Card,
@@ -55,13 +55,15 @@ export function ViewPostPage() {
                                 Category : {post.categories}
                             </CardDescription>
                             <CardAction>
-                                <Button variant="secondary">Edit</Button>
-                                <Button
-                                    variant="outline"
-                                    onClick={() => navigate("/posts")}
-                                >
-                                    Back
-                                </Button>
+                                <div className="space-x-1">
+                                    <Button variant="secondary">Edit</Button>
+                                    <Button
+                                        variant="outline"
+                                        onClick={() => navigate("/posts")}
+                                    >
+                                        Back
+                                    </Button>
+                                </div>
                             </CardAction>
                         </CardHeader>
                         <CardContent>{post.content}</CardContent>
