@@ -7,7 +7,7 @@ export function EditPost(postId) {
     return (
         <DashboardLayout
             documentTitle="NozartBlog | Post Index"
-            breadcrumbs={[{ label: "Post", to: "/posts" }]}
+            breadcrumbs={[{ label: "Post", to: "/posts" }, { label: "Edit Post" }]}
         >
             <h1>Hello, World</h1>
         </DashboardLayout>
