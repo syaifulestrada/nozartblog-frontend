@@ -28,18 +28,13 @@ export function ViewPostPage() {
                     },
                 },
             );
-            setPosts(
-                Array.isArray(response.data.data) ? response.data.data : [],
-            );
+            setPosts(Array.isArray(response.data.data) ? response.data.data : []);
         };
         fetchViewDataPost();
     }, []);
 
     return (
-        <DashboardLayout
-            documentTitle="NozartBlog | View Post"
-            breadcrumbs={[{ label: "Post" }]}
-        >
+        <DashboardLayout documentTitle="NozartBlog | View Post" breadcrumbs={[{ label: "Post" }]}>
             {posts.map((post) => {
                 return (
                     <Card key={post.id}>
@@ -51,16 +46,16 @@ export function ViewPostPage() {
                         />
                         <CardHeader>
                             <CardTitle>{post.title}</CardTitle>
-                            <CardDescription>
-                                Category : {post.categories}
-                            </CardDescription>
+                            <CardDescription>Category : {post.categories}</CardDescription>
                             <CardAction>
                                 <div className="space-x-1">
-                                    <Button variant="secondary">Edit</Button>
                                     <Button
-                                        variant="outline"
-                                        onClick={() => navigate("/posts")}
+                                        variant="secondary"
+                                        onClick={() => navigate(`/posts/edit/${post.id}`)}
                                     >
+                                        Edit
+                                    </Button>
+                                    <Button variant="outline" onClick={() => navigate("/posts")}>
                                         Back
                                     </Button>
                                 </div>
