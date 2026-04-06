@@ -141,7 +141,11 @@ export function CreatePost() {
                             </FieldSet>
                             <Field orientation="horizontal">
                                 <Button type="submit">Submit</Button>
-                                <Button variant="outline" type="button">
+                                <Button
+                                    variant="outline"
+                                    type="button"
+                                    onClick={() => navigate("/posts")}
+                                >
                                     Cancel
                                 </Button>
                             </Field>
