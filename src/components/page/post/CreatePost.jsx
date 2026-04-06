@@ -66,7 +66,7 @@ export function CreatePost() {
     return (
         <DashboardLayout
             documentTitle="NozartBlog | Buat Post"
-            breadcrumbs={[{ label: "Post", to: "/posts" }, { label: "Buat post" }]}
+            breadcrumbs={[{ label: "Post", to: "/posts" }, { label: "Create Post" }]}
         >
             <div className="w-full">
                 <Card className="p-5">
