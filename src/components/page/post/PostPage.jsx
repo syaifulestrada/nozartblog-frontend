@@ -32,7 +32,7 @@ export function PostPage() {
                         >
                             View
                         </Button>
-                        <Button size="sm" variant="secondary">
+                        <Button size="sm" variant="secondary" onClick={() => editPost(post.id)}>
                             Edit
                         </Button>
                         <Button
@@ -78,6 +78,10 @@ export function PostPage() {
             }
         };
         fetchDeletePost();
+    }
+
+    function editPost(postId) {
+        navigate(`/posts/edit/${postId}`);
     }
 
     return (
