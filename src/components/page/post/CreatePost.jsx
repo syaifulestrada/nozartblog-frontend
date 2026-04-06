@@ -65,7 +65,7 @@ export function CreatePost() {
 
     return (
         <DashboardLayout
-            documentcontent="NozartBlog | Buat Post"
+            documentTitle="NozartBlog | Buat Post"
             breadcrumbs={[{ label: "Post", to: "/posts" }, { label: "Buat post" }]}
         >
             <div className="w-full">
