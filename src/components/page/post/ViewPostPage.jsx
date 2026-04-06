@@ -34,7 +34,10 @@ export function ViewPostPage() {
     }, []);
 
     return (
-        <DashboardLayout documentTitle="NozartBlog | View Post" breadcrumbs={[{ label: "Post" }]}>
+        <DashboardLayout
+            documentTitle="NozartBlog | View Post"
+            breadcrumbs={[{ label: "Post", to: "/posts" }, { label: "View Post" }]}
+        >
             {posts.map((post) => {
                 return (
                     <Card key={post.id}>
